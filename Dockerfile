@@ -11,7 +11,7 @@ RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi \
 
 
 # Stage 2: Laravel PHP application
-FROM php:8.3-apache
+FROM php:8.4-apache
 
 RUN apt-get update && apt-get install -y \
     git unzip zip curl libzip-dev libpng-dev \
