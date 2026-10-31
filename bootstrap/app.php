@@ -15,7 +15,13 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->shouldRenderJsonWhen(
-            fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
-        );
+
+        // $exceptions->shouldRenderJsonWhen(
+        //     fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
+        // );
+        $exceptions->report(function (Throwable $e) {
+            dd($e);
+
+            error_log((string) $e);
+        });
     })->create();
